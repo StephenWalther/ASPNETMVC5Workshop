@@ -19,7 +19,7 @@
 
         
         <div class="editor-label">
-            @Html.LabelFor(model => model.MovieToCreate.Category)
+            @Html.LabelFor(model => model.MovieToCreate.Category.Id)
         </div>
         <div class="editor-field">
             @Html.DropDownListFor( model => model.MovieToCreate.Category.Id, Model.Categories)
