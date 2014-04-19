@@ -1,0 +1,25 @@
+﻿@model Calculator.Views.Calculator.AddViewModel
+
+<h2>Add</h2>
+
+<form method="post">
+<div>
+    <label>
+        First Value:
+        @Html.TextBoxFor( m => m.FirstValue)
+    </label>
+</div>
+<div>
+    <label>
+        First Value:
+        @Html.TextBoxFor( m => m.SecondValue)
+    </label>
+</div>
+<div>
+    <input type="submit" value="Add Numbers" />
+</div>
+
+
+Result: @Html.DisplayTextFor( m => m.Result )
+
+</form>

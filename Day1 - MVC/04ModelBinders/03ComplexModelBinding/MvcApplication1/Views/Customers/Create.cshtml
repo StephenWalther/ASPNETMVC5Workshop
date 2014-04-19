@@ -1,0 +1,70 @@
+﻿@model MvcApplication1.Models.Customer
+
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Customer</legend>
+
+        <div>
+            <label>
+                First Name:
+                <br />
+                <input name="firstName" />
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Last Name:
+                <br />
+                <input name="lastName" />
+            </label>
+        </div>
+
+        <fieldset>
+            <legend>Billing Address</legend>
+            <div>
+                <label>
+                    Street:
+                    <br />
+                    <input name="BillingAddress.Street" />
+                </label>
+            </div>
+            <div>
+                <label>
+                    City:
+                    <br />
+                    <input name="BillingAddress.City" />
+                </label>
+            </div>
+        </fieldset>
+
+        
+        <fieldset>
+            <legend>Shipping Address</legend>
+            <div>
+                <label>
+                    Street:
+                    <br />
+                    <input name="ShippingAddress.Street" />
+                </label>
+            </div>
+            <div>
+                <label>
+                    City:
+                    <br />
+                    <input name="ShippingAddress.City" />
+                </label>
+            </div>
+        </fieldset>
+
+        <div>
+            <input type="submit" value="Create" />
+        </div>
+    </fieldset>
+}
+

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <form>
+
+        Name: <input data-bind="value:product.name" />
+        <br />
+        Price: <input data-bind="value:product.price" />
+        <br />
+        <button data-bind="click:updateProduct">Update</button>
+    </form>
+        
+    <script src="../../Scripts/knockout-2.1.0.js"></script>
+    <script type="text/javascript">
+        // Create view model
+        var viewModel = {
+            product: {
+                name: ko.observable("Milk"),
+                price: ko.observable(2.99)
+            },
+
+            updateProduct: function () {
+                alert(viewModel.product.name());
+            }
+        };
+
+        // Bind view model to DOM
+        ko.applyBindings(viewModel);
+
+    </script>
+
+</body>
+</html>

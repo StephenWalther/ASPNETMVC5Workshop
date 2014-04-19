@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>jQuery ajax</title>
+</head>
+<body>
+
+    <script src="../Scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+
+        var customer = {
+            firstName: "Stephen",
+            Address: {
+                street: "101 Main Street",
+                city: "Seattle"
+            }
+        };
+
+
+        $.ajax("products.ashx", {
+            data: JSON.stringify(customer), // convert data to JSON
+            type: "POST", // overrides default of "GET"
+            contentType: "application/json", // overrides default of form-urlencoded
+            dataType: "json" // Sets accepts header and causes jQuery to parse JSON
+        });
+
+
+
+    </script>
+
+
+</body>
+</html>

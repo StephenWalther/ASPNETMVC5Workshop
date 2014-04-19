@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <script type="text/javascript">
+
+
+        // JavaScript customer object with custom toJSON() method
+        var customer = {
+            id: 1,
+            firstName: "Fred",
+            lastName: "Walther",
+            birthDate: new Date("12/25/1988"),
+
+            toJSON: function () {
+                var subset = {
+                    lastName: this.lastName,
+                    birthDate: this.birthDate
+                };
+                return JSON.stringify(subset);
+            }
+        };
+
+        // Serialize into JSON customer string
+        var strCustomer = JSON.stringify(customer);
+        console.log(strCustomer);
+
+
+    </script>
+
+
+</body>
+</html>

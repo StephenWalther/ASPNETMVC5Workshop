@@ -1,0 +1,64 @@
+﻿<div id="errorDiv"></div>
+
+<ul id="movieList"></ul>
+
+<fieldset>
+    <legend>Add Movie</legend>
+    <form id="frmAdd" method="post">
+    <label>
+        Title:
+        <input id="title" />
+    </label>
+    <label>
+        Director:
+        <input id="director" />
+    </label>
+    <input type="submit" value="Add" />
+    </form>
+</fieldset>
+
+@section scripts {
+<script>    
+    // Get DOM elements
+    var errorDiv = $("#errorDiv");
+    var movieList = $("#movieList");
+
+    // Show movies
+    showMovies();
+
+    // Handle submit
+    $("#frmAdd").submit(function (evt) {
+        // Don't actually submit
+        evt.preventDefault();
+
+        // Add movie by making an ajax call
+        var newMovie = {
+            Title: $("#title").val(),
+            Director: $("#director").val()
+        };
+        $.post("/api/Movies", newMovie)
+            .done(showMovies)
+            .fail(showError)
+            .always(function () {
+                $("#frmAdd").get(0).reset();
+            });
+    });
+
+
+    function showMovies() {
+        $.getJSON("/api/Movies").fail(showError).done(function (movies) {
+            movieList.empty();
+            $.each(movies, function (i, movie) {
+                movieList.append("<li>" + movie.Title + " - " + movie.Director + "</li>");
+            });
+        });
+    }
+
+    function showError(err) {
+        errorDiv.html("There was an error calling the server");
+    }
+
+
+
+</script>
+}

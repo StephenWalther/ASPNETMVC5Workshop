@@ -1,0 +1,43 @@
+﻿<input id="filter" />
+<ul id="productsList"></ul>
+
+
+@section scripts {
+
+    <script>
+        // Key up filter
+        $("#filter").keyup(function (evt) {
+            // Get current filter string
+            var filterString = $("#filter").val();
+
+            // Create OData URL
+            var url = "/odata/ProductsEntitySet"
+                + "?$filter=startswith(Name,'" + filterString + "')"
+                + "&$orderby=Name"
+                + "&$top=3";
+
+            // Perform Ajax call
+            $.ajax({
+                url: url,
+                statusCode: {
+                    200: function (result) {
+                        var products = result.value;
+
+                        // Clear old results
+                        $("#productsList").empty();
+
+                        // Show new results
+                        for (var i = 0; i < products.length; i++) {
+                            var product = products[i];
+                            $("#productsList").append("<li>" + product.Name + "</li>");
+                        }
+                    }
+                }
+            });
+
+        });
+
+
+    </script>
+
+}

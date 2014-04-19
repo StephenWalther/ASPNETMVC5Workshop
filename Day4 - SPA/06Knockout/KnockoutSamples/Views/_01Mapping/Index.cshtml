@@ -1,0 +1,19 @@
+﻿@model KnockoutSamples.Controllers.CustomerViewModel
+
+@{
+    // Create client view model
+    var ser = new System.Web.Script.Serialization.JavaScriptSerializer();
+    var viewModel = ser.Serialize(Model);
+}
+    
+<!-- Install-Package Knockout.Mapping -->
+
+<script src="../../Scripts/knockout-2.1.0.js"></script>
+<script src="../../Scripts/knockout.mapping-latest.js"></script>    
+<script type="text/javascript"> 
+    // Map view model into an observable
+    var viewModel = ko.mapping.fromJSON('@Html.Raw(viewModel)');
+    
+    alert(viewModel.FirstName() + " lives on " + viewModel.BillingAddress.Street() );
+
+</script>

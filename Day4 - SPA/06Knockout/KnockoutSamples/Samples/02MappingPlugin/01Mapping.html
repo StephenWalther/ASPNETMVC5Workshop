@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    
+    <!-- Install-Package Knockout.Mapping -->
+
+    <script src="../../Scripts/knockout-2.1.0.js"></script>
+    <script src="../../Scripts/knockout.mapping-latest.js"></script>
+    <script type="text/javascript">
+
+        // Not observable
+        var product = {
+            name: "Milk",
+            price: 2.99
+        };
+
+        // Observable product using Mapping plugin
+        var obsProduct = ko.mapping.fromJS(product);
+
+
+        obsProduct.price.subscribe(function (newValue) {
+            alert("New product price is " + newValue);
+        });
+
+        // Change it
+        obsProduct.price(4.99);
+
+
+    </script>
+
+</body>
+</html>

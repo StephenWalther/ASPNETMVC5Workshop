@@ -1,0 +1,57 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+
+    <style type="text/css"> 
+        
+        #lnkLogin {
+            float:right;   
+        }
+        
+        
+        #divLogin {
+            float:right;
+            width: 300px;
+            border: solid 2px black;
+            background-color: Orange;
+            padding:10px;
+            display:none;
+        }
+    
+    </style>
+</head>
+<body>
+
+    <a id="lnkLogin" href="#">Login</a>
+    <br />
+    <form>
+        <div id="divLogin">
+            <div>
+            <label>
+                User Name: <br />
+                <input id="txtUsername" />
+            </label>
+            </div>
+            <div>
+            <label>
+                Password: <br />
+                <input id="txtPassword" />
+            </label>
+            </div>
+            <div>
+                <input type="submit" value="Login" />
+            </div>
+        </div>
+    </form>
+
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+
+        $("#lnkLogin").click(function () {
+            $("#divLogin").slideToggle("slow");
+        });
+
+    </script>
+
+</body>
+</html>

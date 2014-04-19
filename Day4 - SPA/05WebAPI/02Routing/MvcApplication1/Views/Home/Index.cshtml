@@ -1,0 +1,68 @@
+﻿
+
+<h1>HTTP Method Routing</h1>
+<p>
+    Leverage REST to invoke the right controller action
+</p>
+
+<ul>
+<li>
+    <a href="/api/movies" data-method="get">GET /api/movies</a>
+</li>
+<li>
+    <a href="/api/movies/1" data-method="get">GET /api/movies/1</a>
+</li>
+<li>
+    <a href="/api/movies" data-method="post">POST /api/movies</a>
+</li>
+<li>
+    <a href="/api/movies/1" data-method="put">PUT /api/movies/1</a>
+</li>
+<li>
+    <a href="/api/movies/1" data-method="delete">DELETE /api/movies/1</a>
+</li>
+</ul>
+
+<h1>Action Routing</h1>
+<p>
+    Routing works just like in ASP.NET MVC
+</p>
+<ul>
+<li>
+    <a href="/api2/products/list" data-method="get">GET /api2/products/list</a>
+</li>
+<li>
+    <a href="/api2/products/get/1" data-method="get">GET /api2/products/get/1</a>
+</li>
+<li>
+    <a href="/api2/products/create" data-method="post">POST /api2/products/create</a>
+</li>
+<li>
+    <a href="/api2/products/update/1" data-method="post">POST /api2/products/update/1</a>
+</li>
+<li>
+    <a href="/api2/products/delete/1" data-method="post">POST /api2/products/delete/1</a>
+</li>
+</ul>
+
+@section scripts {
+<script>
+    $("a").click(function(evt) {
+        // Don't navigate
+        evt.preventDefault();
+
+        // Get the particular link element
+        var link = evt.target;
+        var href = link.getAttribute("href");
+        var method = link.getAttribute("data-method");
+
+        // Perform Ajax call
+        $.ajax({
+            url: href,
+            type: method
+        });
+    });
+
+
+</script>
+}

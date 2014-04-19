@@ -1,0 +1,32 @@
+﻿
+<ul id="moviesList"></ul>
+
+
+@section scripts {
+
+<script>        
+
+    // Perform Ajax call to fetch and display movies
+    $.ajax({
+        headers: {
+            apiKey: "SuperSecretKey"
+        },
+        url: "/api/movies",
+        type: "GET",
+        statusCode: {
+            200: function (movies) {
+                for (var i = 0; i < movies.length; i++) {
+                    var movie = movies[i];
+                    $("#moviesList").append("<li>" + movie.Title + "</li>");
+                }
+            },
+            401: function () {
+                alert("Unauthorized!");
+            }
+        }
+    });
+
+</script>
+
+}
+

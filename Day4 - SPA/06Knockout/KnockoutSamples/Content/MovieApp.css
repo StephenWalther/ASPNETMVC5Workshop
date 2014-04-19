@@ -1,0 +1,18 @@
+﻿table
+{
+    background-color: #deebee;
+    border-collapse: collapse;
+}
+
+td, th
+{
+    border-bottom: solid 2px black;
+    padding: 15px;
+}
+
+li
+{
+    
+    font-weight: bold;
+    color: red;
+}

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    
+    <!-- Install-Package Knockout.Mapping -->
+
+    <script src="../../Scripts/knockout-2.1.0.js"></script>
+    <script src="../../Scripts/knockout.mapping-latest.js"></script>
+    <script type="text/javascript">
+
+
+        // Not observable array
+        var products = [
+            { name: "Milk", price: 2.99 },
+            { name: "Bread", price: 3.50 },
+            { name: "Cheese", price: 1.99 }
+        ];
+
+        // Create observable array
+        var obsProducts = ko.mapping.fromJS(products);
+
+        // Get first product and write name
+        var product1 = obsProducts()[1];
+        alert(product1.name());
+    </script>
+
+
+</body>
+</html>

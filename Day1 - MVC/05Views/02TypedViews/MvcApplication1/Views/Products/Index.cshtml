@@ -1,0 +1,10 @@
+﻿@model MvcApplication1.Views.Products.IndexViewModel
+
+<h2>Index</h2>
+
+<ul>
+@foreach (var product in Model.Products) {
+    <li>@product.Name - @product.Price</li>
+}
+</ul>
+

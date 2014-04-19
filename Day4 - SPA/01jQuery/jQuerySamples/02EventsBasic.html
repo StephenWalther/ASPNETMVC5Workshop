@@ -1,0 +1,38 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+
+    <style type="text/css"> 
+        
+        #message {
+            background-color: #eeeeee;
+            border: solid 2px black;
+            padding: 10px;
+            display:none;   
+        }
+    
+    </style>
+</head>
+<body>
+    
+
+    <button id="btn">Click Me!</button>
+
+    <div id="message">
+        <h1>Secret Message</h1>
+    </div>
+
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+
+        $("#btn").click(function () {
+            $("#message").toggle();
+        });
+
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+﻿@model string[]
+
+<h3>Featured Products</h3>
+<ul>
+@foreach (var product in @Model) {
+    <li>@product</li>
+}
+</ul>
+

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <label>Car Make:</label>
+    <select data-bind="options:carMakes,
+        optionsText: 'Name', 
+        optionsCaption: '[Select Car Make]', 
+        value: selectedCarMake"></select>
+
+
+    <label>Car Model:</label>
+    <select data-bind="options:selectedCarMake()?selectedCarMake().Models:null,
+        optionsText: 'Name', 
+        optionsCaption: '[Select Car Model]', 
+        value: selectedCarModel"></select>
+
+                
+    <script src="../../Scripts/knockout-2.1.0.js"></script>
+    <script type="text/javascript">
+
+        var makes = [
+            { Name: "Acura", Models: [{ Name: "MDX" }, { Name: "RDX" }] },
+            { Name: "BMW", Models: [{ Name: "700" }, { Name: "900" }] }
+        ];
+
+        var vm = {
+            carMakes: ko.observableArray(makes),
+            selectedCarMake: ko.observable(),
+            selectedCarModel: ko.observable()
+        };
+
+        ko.applyBindings(vm);
+
+
+
+    </script>
+
+</body>
+</html>

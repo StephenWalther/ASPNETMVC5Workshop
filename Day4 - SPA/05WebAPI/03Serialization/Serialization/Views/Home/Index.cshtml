@@ -1,0 +1,41 @@
+﻿<h1>Movies</h1>
+<div id="moviesList"></div>
+
+
+<h1>Products</h1>
+<div id="productsList"></div>
+
+
+@section scripts {
+
+    <script>
+        /*
+            Using the CamelCasePropertyNamesContractResolver
+        */
+        
+        $.getJSON("/api/movies", function (movies) {
+            var moviesList = $("#moviesList");
+            for (var i = 0; i < movies.length; i++) {
+                var movie = movies[i];
+                // Notice that we can use movie.title instead of movie.Title
+                moviesList.append("<li>" + movie.title + " - " + movie.director + "</li>");
+            }
+        });
+
+
+        /*
+            Using serialization attributes
+        */
+
+        $.getJSON("/api/products", function (products) {
+            var productsList = $("#productsList");
+            for (var i = 0; i < products.length; i++) {
+                var product = products[i];
+                // Both the CamelCasePropertyNamesContractResolver and the JsonProperty attributes are applied
+                productsList.append("<li>" + product.nAME + " - " + product.pRICE + "</li>");
+            }
+        });
+
+    </script>
+
+}

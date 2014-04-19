@@ -1,0 +1,36 @@
+﻿
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+
+        <div id="results"></div>
+
+        <img src="/Images/JellyFish.ashx" alt="Jelly Fish" />
+
+        <script src="Scripts/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript">
+
+
+
+            $(window).ready(function () {
+                var now = new Date();
+                $("#results").append("Ready happened at " + now.toTimeString() + "<br />");
+            });
+
+
+            $(window).load(function () {
+                var now = new Date();
+                $("#results").append("Load happened at " + now.toTimeString() + "<br />");
+            });
+
+
+        </script>
+    
+    </div>
+    </form>
+</body>
+</html>

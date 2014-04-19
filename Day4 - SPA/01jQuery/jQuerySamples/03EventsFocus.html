@@ -1,0 +1,73 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+
+    <style type="text/css">
+    
+        .help {
+            width:200px;
+            border: dotted orange 4px;
+            padding:10px;
+            background-color: #eeeeee;
+            float:right;        
+            display:none;
+        }
+        
+        #content {
+            width: 400px;   
+            font-family: Verdana;
+        }
+    
+    </style>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="content">
+    
+
+        <input id="firstName" />
+        
+        <div class="help">
+            Enter your first name. If you don't have a first name, enter your favorite color.
+        </div>  
+
+        <br /><br />
+
+        <input id="lastName" />
+        
+        <div class="help">
+            Enter your last name. If you don't have a last name, supply your telephone number.
+        </div>  
+
+        <br /><br />
+
+
+        <input id="favoriteColor"  />
+        
+        <div class="help">
+            Enter your favorite color. If you don't have a favorite color, enter your favorite movie.
+        </div>  
+
+
+
+    </div>
+    </form>
+
+
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+
+        $("input").focus(function () {
+            $(this).next("div").show();
+        });
+
+        $("input").blur(function () {
+            $(this).next("div").hide();
+        });
+
+    </script>
+
+
+</body>
+</html>

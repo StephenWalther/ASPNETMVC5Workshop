@@ -1,0 +1,34 @@
+﻿@model MvcApplication1.Views.Movies.CreateViewModel
+
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Movie</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MovieToCreate.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MovieToCreate.Title)
+            @Html.ValidationMessageFor(model => model.MovieToCreate.Title)
+        </div>
+
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MovieToCreate.Category)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor( model => model.MovieToCreate.Category.Id, Model.Categories)
+        </div>
+
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+

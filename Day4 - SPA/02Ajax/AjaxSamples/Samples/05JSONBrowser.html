@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+   
+
+    <script type="text/javascript">
+
+        // JavaScript customer object
+        var customer = {
+            id: 1,
+            firstName: "Fred",
+            birthdate: new Date("12/25/1988")
+        };
+
+        // Serialize into JSON customer string
+        var strCustomer = JSON.stringify(customer);
+        console.log(typeof strCustomer); // string
+
+        // DeSerialize into JavaScript object
+        var customer2 = JSON.parse(strCustomer);
+        console.log(typeof customer2); // object
+
+
+    </script>
+
+
+
+</body>
+</html>

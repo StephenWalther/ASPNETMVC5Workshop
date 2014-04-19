@@ -1,0 +1,27 @@
+﻿<html>
+<head>
+    <title></title>
+    
+    <link href="Content/themes/base/jquery-ui.css" rel="stylesheet" />
+</head>
+<body>
+    <form>
+    
+        Select a Movie:
+        <input id="movie" />
+
+    </form>
+
+    <script src="Scripts/jquery-1.7.1.min.js"></script>
+    <script src="Scripts/jquery-ui-1.8.20.min.js"></script>
+
+    <script type="text/javascript">
+
+        // Show autocomplete by retrieving suggestions from MVC action
+        $("#movie").autocomplete({
+            source: "/Movies/Suggest"
+        });
+
+    </script>
+</body>
+</html>

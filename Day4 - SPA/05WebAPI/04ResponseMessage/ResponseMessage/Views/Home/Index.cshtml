@@ -1,0 +1,110 @@
+﻿<ul>
+    <li>
+        <a href="/api/movies">Get Movies</a>
+    </li>
+    <li>
+        <a href="/api/movies/1">Get A Movie</a>
+    </li>
+    <li>
+        <a id="postMovie" href="/api/movies">Post A New Movie</a>
+    </li>
+    <li>
+        <a id="updateMovie" href="/api/movies">Update An Existing Movie</a>
+    </li>
+    <li>
+        <a id="deleteMovie" href="/api/movies">Delete An Existing Movie</a>
+    </li>
+
+</ul>
+
+@section scripts {
+    <script>    
+
+        /*
+            Add Movie
+        */
+
+        $("#postMovie").click(function (evt) {
+            // Don't navigate
+            evt.preventDefault();
+
+            // Create Star Wars
+            var newMovie = { title: "Star Wars", director: "Lucas" };
+
+            // Perform Ajax call
+            $.ajax({
+                url: "/api/movies",
+                type: "POST",
+                data: newMovie,
+                statusCode: {
+                    201: function (newMovie, status, xhr) {
+                        var location = xhr.getResponseHeader("Location");
+                        alert("New Movie Created at " + location);
+                    }
+
+                }
+            });
+
+        });
+
+
+        /*
+            Update Movie
+        */
+
+        $("#updateMovie").click(function (evt) {
+            // Don't navigate
+            evt.preventDefault();
+
+            // Update Star Wars
+            var newMovie = {id:27, title: "Star Warz", director: "Lucas" };
+
+            // Perform Ajax call
+            $.ajax({
+                url: "/api/movies",
+                type: "PUT",
+                data: newMovie,
+                statusCode: {
+                    200: function() {
+                        alert("Movie updated!");
+                    },
+                    404: function (newMovie, status, xhr) {
+                        alert("Could not find movie!");
+                    }
+
+                }
+            });
+
+        });
+
+
+        /*
+            Delete Movie
+        */
+
+        $("#deleteMovie").click(function (evt) {
+            // Don't navigate
+            evt.preventDefault();
+
+            // Perform Ajax call
+            $.ajax({
+                url: "/api/movies/27",
+                type: "DELETE",
+                statusCode: {
+                    500: function () {
+                        alert("Could not delete movie!");
+                    },
+                    204: function (newMovie, status, xhr) {
+                        alert("Movie deleted!");
+                    }
+
+                }
+            });
+
+        });
+
+
+    </script>
+
+
+}

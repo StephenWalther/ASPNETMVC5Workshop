@@ -1,0 +1,117 @@
+﻿<div id="loginPanel">
+    <fieldset>
+        <legend>Login</legend>
+        <p>You must login to view the movies</p>
+        <form id="frmLogin" method="post">
+                <div id="loginError"></div>
+                <label>
+                Username:
+                <input id="userName" />
+            </label>
+            <label>
+                Password:
+                <input id="password" />
+            </label>
+            <input type="submit" value="Login" />
+        </form>
+    </fieldset>
+</div>
+<div id="logoutPanel">
+    <a id="logout" href="/logout">Logout</a>
+</div>
+<div id="moviesPanel">
+    <ul id="moviesList"></ul>
+</div>
+
+
+@section scripts {
+    <script>
+
+        // Attempt to show movies
+        showMovies();
+
+
+        // Perform Ajax call to fetch and display movies
+        function showMovies() {
+            $("#moviesList").empty();
+            $.ajax({
+                url: "/api/movies",
+                type: "GET",
+                statusCode: {
+                    200: function (movies) {
+                        requiresLogin(false);
+                        for (var i = 0; i < movies.length; i++) {
+                            var movie = movies[i];
+                            $("#moviesList").append("<li>" + movie.Title + "</li>");
+                        }
+                    },
+                    401: function () {
+                        requiresLogin(true);
+                    }
+                }
+            });
+        }
+
+
+        // Handle login form submit
+        $("#frmLogin").submit(function (evt) {
+            // Don't actually submit
+            evt.preventDefault();
+
+            // Create the login view model
+            var login = {
+                userName: $("#userName").val(),
+                password: $("#password").val()
+            };
+
+            // Perform ajax request
+            $.ajax({
+                url: "/api/account/login",
+                type: "POST",
+                data: login,
+                statusCode: {
+                    200: showMovies,
+                    401: function () {
+                        $("#loginError").html("Invalid username/password");
+                    }
+                }
+            });
+
+        });
+
+
+        // Handle logout link click
+        $("#logout").click(function (evt) {
+            // Don't navigate
+            evt.preventDefault();
+
+            // Perform ajax call to kill cookie
+            $.ajax({
+                url: "/api/account/logout",
+                statusCode: {
+                    200: function () {
+                        requiresLogin(true);
+                    }
+                }
+            });
+        });
+
+
+        function requiresLogin(yes) {
+            if (yes) {
+                $("#loginError").empty();
+                $("#loginPanel").show();
+                $("#logoutPanel").hide();
+                $("#moviesPanel").hide();
+            } else {
+                $("#loginPanel").hide();
+                $("#logoutPanel").show();
+                $("#moviesPanel").show();
+            }
+        }
+
+
+
+
+    </script>
+}

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <ul data-bind="foreach:movies">
+        <li data-bind="text:Title"></li>
+    </ul>
+
+    <script src="../../Scripts/jquery-1.7.1.min.js"></script>
+    <script src="../../Scripts/knockout-2.1.0.js"></script>
+    <script type="text/javascript">
+
+        // Create the view model
+        var viewModel = {
+
+            movies: ko.observableArray(),
+
+            getMovies: function () {
+                // Retain "this" reference
+                var that = this;
+
+                // Make ajax call
+                $.ajax("/api/movies", {
+                    type: "GET",
+                    contentType: "application/json",
+                    dataType: "json",
+                    statusCode: {
+                        200: function (results) {
+                            that.movies(results);
+                        }
+                    }
+                });
+            }
+
+        };
+
+        // Bind the view model to the view
+        ko.applyBindings(viewModel);
+
+        // Kick-off the work
+        viewModel.getMovies();
+
+    </script>
+
+
+</body>
+</html>

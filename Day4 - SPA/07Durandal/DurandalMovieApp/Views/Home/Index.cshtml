@@ -1,0 +1,20 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+     @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div id="applicationHost">
+        Loading app....
+    </div>
+        
+    @Scripts.Render("~/scripts/vendor") 
+    <script type="text/javascript" src="~/App/durandal/amd/require.js" 
+        data-main="/App/main"></script>
+        
+</body>
+</html>

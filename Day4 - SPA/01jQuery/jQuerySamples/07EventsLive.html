@@ -1,0 +1,36 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+
+
+    <ul id="shoppingList"></ul>
+    <button id="btnAdd">Add</button>
+
+
+
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+
+        var itemCount = 0;
+
+        // Add click handler to any item in the shoppingList -- now or in the future
+        $(document).on("click", "#shoppingList li", function (evt) {
+            alert($(this).text() );
+        });
+
+
+        // Add a new item when you click the button
+        $("#btnAdd").click(function () {
+            itemCount++;
+            $("#shoppingList").append("<li>Item " + itemCount + "</li>");
+
+        });
+
+    </script>
+
+
+
+</body>
+</html>

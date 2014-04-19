@@ -1,0 +1,129 @@
+﻿<div id="errorList" class="validationErrors"></div>
+
+
+<fieldset>
+    <legend>Add Movie</legend>
+    <form id="frmMovie" method="post">
+    <label>
+        Title:
+        <input id="title" />
+    </label>
+    <label>
+        Director:
+        <input id="director" />
+    </label>
+    <input type="submit" value="Add" />
+    </form>
+</fieldset>
+
+
+<fieldset>
+    <legend>Add Product</legend>
+    <form id="frmProduct" method="post">
+    <label>
+        Name:
+        <input id="name" />
+    </label>
+    <label>
+        Price:
+        <input id="price" />
+    </label>
+    <input type="submit" value="Add" />
+    </form>
+</fieldset>
+
+
+
+@section scripts {
+<script>    
+    // Get DOM elements
+    var errorList = $("#errorList");
+ 
+ 
+    /***********************************
+        Handle Movie Form
+    ************************************/
+    $("#frmMovie").submit(function (evt) {
+        // Don't actually submit
+        evt.preventDefault();
+
+        // Clear any previous errors
+        errorList.empty();
+
+        // Add movie by making an ajax call
+        var newMovie = {
+            Title: $("#title").val(),
+            Director: $("#director").val()
+        };
+        $.ajax({
+            url: "/api/movies",
+            type: "POST",
+            data: newMovie,
+            statusCode: {
+                201: function () {
+                    $("#frmMovie").get(0).reset();
+                    alert("New movie created!");
+                },
+                400: function (xhr) {
+                    var response = JSON.parse(xhr.responseText);
+                    renderValidationErrors(response.ModelState);
+                }
+            }
+        });
+
+    });
+
+
+    /************************
+        Handle Product Form
+    *************************/
+    $("#frmProduct").submit(function (evt) {
+        // Don't actually submit
+        evt.preventDefault();
+
+        // Clear any previous errors
+        errorList.empty();
+
+        // Add product by making an ajax call
+        var newProduct = {
+            Name: $("#name").val(),
+            Price: $("#price").val()
+        };
+        $.ajax({
+            url: "/api/products",
+            type: "POST",
+            data: newProduct,
+            statusCode: {
+                201: function () {
+                    $("#frmProduct").get(0).reset();
+                    alert("New product created!");
+                },
+                400: function (xhr) {
+                    var response = JSON.parse(xhr.responseText);
+                    renderValidationErrors(response.ModelState);
+                }
+            }
+        });
+
+    });
+
+
+    /************************
+    Render validation errors
+    ************************/
+
+    function renderValidationErrors(modelState) {
+        // Loop through each property in model state
+        for (var p in modelState) {
+            var prop = modelState[p];
+            // Loop through each error associated with each property
+            for (var e = 0; e < prop.length; e++) {
+                var error = prop[e];
+                errorList.append("<li>" + p + " - " + error + "</li>");
+            }
+        }
+    }
+
+
+</script>
+}

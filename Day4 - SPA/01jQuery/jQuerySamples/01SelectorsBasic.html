@@ -1,0 +1,33 @@
+﻿
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Basic Selectors</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <div id="div1">Here is the first message</div>
+        
+        <div class="required">Here is the second message</div>
+
+        <span>Here is the third message</span>
+
+        <script src="Scripts/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript">
+
+            // Id selector
+            $("#div1").css("backgroundColor", "yellow");
+
+            // Class selector
+            $(".required").css("border", "solid 2px red");
+
+            // Element selector
+            $("span").css("color", "purple");
+        </script>
+
+
+    </div>
+    </form>
+</body>
+</html>

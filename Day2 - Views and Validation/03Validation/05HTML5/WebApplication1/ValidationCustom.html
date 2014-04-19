@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Constraint Validation API</title>
+</head>
+<body>
+ 
+    <form>
+        <label>
+            Arrival Date:
+            <input id="arrivalDate" type="date" required />
+        </label>
+        <button>Submit Reservation</button>
+    </form>
+ 
+    <script type="text/javascript">
+
+        var arrivalDate = document.getElementById("arrivalDate");
+
+        arrivalDate.addEventListener("input", function () {
+            var value = new Date(arrivalDate.value);
+            if (value < new Date()) {
+                arrivalDate.setCustomValidity("Arrival date must be after now!");
+            } else {
+                arrivalDate.setCustomValidity("");
+            }
+
+        });
+
+    </script>
+ 
+</body>
+</html>

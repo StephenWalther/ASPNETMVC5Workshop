@@ -1,0 +1,46 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+
+    <style type="text/css">
+        
+        #divOther {
+            display: none;   
+        }
+    
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+    How did you hear about our website?
+    <select id="ddl">
+        <option value="magazine">Magazine</option>
+        <option value="search">Search Engine</option>
+        <option value="other">Other</option>
+    </select>
+
+    <div id="divOther">
+        Other:
+        <input id="other" />
+    </div>
+
+    </div>
+    </form>
+
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+
+        $("#ddl").change(function () {
+            if ($(this).val() == "other") {
+                $("#divOther").show();
+            } else {
+                $("#divOther").hide();
+            }
+        });
+
+    </script>
+
+</body>
+</html>

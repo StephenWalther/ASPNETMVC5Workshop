@@ -1,0 +1,20 @@
+﻿#loginPanel
+{
+    display:none;
+}
+
+#logoutPanel
+{
+    display:none;
+}
+
+#moviesPanel
+{
+    display:none;
+}
+
+#loginError
+{
+    color:red;
+    margin:15px;
+}

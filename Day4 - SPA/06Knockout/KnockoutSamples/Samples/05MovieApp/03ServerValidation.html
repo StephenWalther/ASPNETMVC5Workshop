@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../Content/MovieApp.css" />
+</head>
+<body>
+
+    <table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Director</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach:movies">
+        <tr>
+            <td data-bind="text:Title"></td> 
+            <td data-bind="text:Director"></td> 
+        </tr>
+    </tbody>
+    </table>
+
+    <form id="frmAdd" data-bind="submit:addMovie">
+
+        <ul data-bind="foreach:movieToAddErrors">
+            <li data-bind="text:$data"></li>
+        </ul>
+            
+        <div>
+            <label>Title:</label>
+            <input data-bind="value:movieToAdd.Title" />
+        </div>
+        <div>
+            <label>Director:</label>
+            <input data-bind="value:movieToAdd.Director" />
+        </div>
+        <div>
+            <input type="submit" value="Add Movie" />
+        </div>
+    </form>
+
+
+    
+    <script src="../../Scripts/jquery-1.7.1.min.js"></script>
+    <script src="../../Scripts/knockout-2.1.0.js"></script>
+    <script type="text/javascript">
+
+        // Create the view model
+        var viewModel = {
+
+            movies: ko.observableArray(),
+
+            movieToAdd: {
+                Title: ko.observable(""),
+                Director: ko.observable("")
+            },
+
+            movieToAddErrors: ko.observableArray(),
+
+            addMovie: function () {
+                // Retain "this" reference
+                var that = this;
+
+                // Make ajax call
+                $.ajax("/api/movies", {
+                    type: "POST",
+                    data: ko.toJSON(that.movieToAdd),
+                    contentType: "application/json",
+                    dataType: "json",
+                    statusCode: {
+                        201: function (newMovie) {
+                            that.movies.push(newMovie); // Show movie
+                            that.movieToAddErrors([]);  // Clear errors
+                            $("#frmAdd").get(0).reset(); // Clear add form
+                        },
+                        400: function (xhr) {
+
+                            var response = JSON.parse(xhr.responseText);
+                            var errors = [];
+                            for (var prop in response.ModelState) {
+                                var valErrors = response.ModelState[prop];
+                                for (var e = 0; e < valErrors.length; e++) {
+                                    errors.push(valErrors[e]);
+                                }
+                            }
+                            that.movieToAddErrors(errors);
+                        }
+                    }
+                });
+            },
+
+            getMovies: function () {
+                // Retain "this" reference
+                var that = this;
+
+                // Make ajax call
+                $.ajax("/api/movies", {
+                    type: "GET",
+                    contentType: "application/json",
+                    dataType: "json",
+                    statusCode: {
+                        200: function (results) {
+                            that.movies(results);
+                        }
+                    }
+                });
+            }
+
+        };
+
+        // Bind the view model to the view
+        ko.applyBindings(viewModel);
+
+        // Kick-off the work
+        viewModel.getMovies();
+
+    </script>
+
+
+</body>
+</html>

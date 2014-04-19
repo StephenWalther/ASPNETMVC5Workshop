@@ -1,0 +1,45 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+
+    <style type="text/css"> 
+    
+        #message {
+            background-color: #eeeeee;
+            border: solid 2px black;
+            padding:10px;
+            display:none;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+
+
+        <a id="lnk" href="05EventsObject.aspx">Click Me!</a>
+
+        <div id="message">
+            <h1>Here is the Message</h1>
+        </div>
+
+    
+    </div>
+    </form>
+
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+
+
+        $("#lnk").click(function (ev) {
+            ev.preventDefault();
+            $("#message").show();
+        });
+
+    </script>
+
+
+</body>
+</html>

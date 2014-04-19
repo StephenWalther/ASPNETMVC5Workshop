@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>jQuery post</title>
+</head>
+<body>
+
+    <script src="../Scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+
+        var customer = {
+            firstName: "Stephen",
+            Address: {
+                street: "101 Main Street",
+                city: "Seattle"
+            }
+        };
+
+
+        $.post("products.ashx", customer, function (products) {
+            console.log("Retrieved " + products.length + " products");
+        });
+
+
+        /******************************************************************************************
+            Need to use a handler because you cannot post to a static file such as products.json
+        ******************************************************************************************/
+
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>jQuery ajax</title>
+</head>
+<body>
+
+    <script src="../Scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+
+        var customer = {
+            firstName: "Stephen",
+            Address: {
+                street: "101 Main Street",
+                city: "Seattle"
+            }
+        };
+
+
+        invokeAction("Products", "GetProducts", "GET").done(function (products) {
+            alert("Retrieved " + products.length + " products");
+        }).fail(function (xhr) {
+            alert("Failed with status code " + xhr.status);
+        });
+
+
+        function invokeAction(controllerName, actionName, method, data) {
+            var url = "/api/" + controllerName + "/" + actionName;
+            return $.ajax(url, {
+                type: method, // overrides default of "GET"
+                data: JSON.stringify(data), // convert data to JSON
+                contentType: "application/json", // overrides default of form-urlencoded
+                dataType: "json" // Sets accepts header and causes jQuery to parse JSON
+            });
+        }
+
+
+
+    </script>
+
+
+</body>
+</html>

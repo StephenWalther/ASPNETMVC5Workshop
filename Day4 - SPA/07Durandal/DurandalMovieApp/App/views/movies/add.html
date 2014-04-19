@@ -1,0 +1,21 @@
+﻿<form data-bind="submit:addMovie">
+<fieldset>
+    <legend>Add Movie</legend>
+    <div>   
+        <label>
+            Title:
+            <input data-bind="value:movieToAdd.title" required />
+        </label>
+    </div>
+    <div>
+        <label>
+            Director:
+            <input data-bind="value:movieToAdd.director" required />
+        </label>
+    </div>
+    <div>
+        <input type="submit" value="Add" />
+        <a href="#/movies/show">Cancel</a>
+    </div>
+</fieldset>
+</form>

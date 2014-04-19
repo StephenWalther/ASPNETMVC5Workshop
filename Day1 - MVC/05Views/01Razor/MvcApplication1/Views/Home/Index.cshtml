@@ -1,0 +1,31 @@
+﻿<style>
+    .onSale {
+        background-color: lightgreen;
+        padding: 10px;
+    }
+
+    .regular
+    {
+        background-color: lightgray;
+        padding: 10px;
+    }
+</style>
+
+@using MvcApplication1.Models
+@{
+    var products = new List<Product> {
+        new Product {Name="Milk", Price=2.99m, OnSale=true},       
+        new Product {Name="Bread", Price=3.00m, OnSale=false},       
+        new Product {Name="Apples", Price=8.99m, OnSale=true}               
+    };    
+}
+
+@foreach (var product in products) {
+    <div class='@(product.OnSale ? "onSale" : "regular")'>
+        @product.Name
+        @product.Price
+    </div>   
+}
+
+<hr />
+Sum: @products.Sum( p => p.Price)

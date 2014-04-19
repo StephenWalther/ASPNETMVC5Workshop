@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+ 
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <style>
+        #headerSection
+        {
+            background-color:lightblue;
+            padding: 10px;
+        }
+
+        #footerSection
+        {
+            background-color:lightgreen;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="headerSection">
+        @RenderSection("HeaderSection", true)
+    </div>
+ 
+    <div>
+        @RenderBody()
+    </div>
+ 
+    <div id="footerSection">
+        @RenderSection("FooterSection")
+    </div>
+ 
+</body>
+</html>

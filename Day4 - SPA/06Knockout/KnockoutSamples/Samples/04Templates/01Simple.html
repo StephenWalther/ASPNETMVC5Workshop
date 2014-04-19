@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <ul data-bind="foreach:products">
+        <li data-bind="text:name"></li>
+    </ul>
+
+            
+    <script src="../../Scripts/knockout-2.1.0.js"></script>
+    <script type="text/javascript">
+
+        var viewModel = {
+            products: [
+                { name: "Milk", price: 2.99 },
+                { name: "Bread", price: 3.50 },
+                { name: "Cheese", price: 1.99 }
+            ]
+        };
+
+        ko.applyBindings(viewModel);
+
+
+    </script>
+
+</body>
+</html>

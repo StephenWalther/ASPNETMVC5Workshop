@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Simple</title>
+</head>
+<body>
+
+    <script src="../../Scripts/knockout-2.1.0.js"></script>
+    <script type="text/javascript">
+
+
+        var obsProduct = {
+            name: ko.observable("Milk"),
+            price: ko.observable(2.99)
+
+        };
+
+
+        // Notify on changes
+        obsProduct.price.subscribe(function (newValue) {
+            alert("New product price is " + newValue);
+        });
+
+        // Change it
+        obsProduct.price(4.99);
+
+
+
+    </script>
+
+
+</body>
+</html>

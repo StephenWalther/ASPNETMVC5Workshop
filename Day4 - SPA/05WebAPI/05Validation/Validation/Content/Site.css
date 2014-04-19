@@ -1,0 +1,10 @@
+﻿.validationErrors
+{
+    color: red;
+    margin: 15px;
+}
+
+.validationErrors li
+{
+    margin-bottom:5px;
+}
