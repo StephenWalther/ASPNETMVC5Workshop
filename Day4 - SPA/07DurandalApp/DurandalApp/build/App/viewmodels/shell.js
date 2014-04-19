@@ -1,0 +1,1 @@
+define(["plugins/router","durandal/app"],function(e,t){return{router:e,search:function(){t.showMessage("Search not yet implemented...")},activate:function(){return e.map([{route:"",title:"Welcome",moduleId:"viewmodels/welcome",nav:!0},{route:"flickr",moduleId:"viewmodels/flickr",nav:!0}]).buildNavigationModel(),e.activate()}}});

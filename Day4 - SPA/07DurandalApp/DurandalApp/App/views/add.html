@@ -1,0 +1,27 @@
+﻿<section>
+    <p></p>
+
+    <ul data-bind="foreach:movieToAddErrors">
+        <li data-bind="text:$data"></li>
+    </ul>
+
+
+    <form data-bind="submit:save">
+        <div>
+            <label>
+                Title:
+                <input data-bind="value:movieToAdd.title" />
+            </label>
+        </div>
+        <div>
+            <label>
+                Director:
+                <input data-bind="value:movieToAdd.director" />
+            </label>
+        </div>
+
+        <input type="submit" value="Add Movie" />
+    </form>
+
+
+</section>

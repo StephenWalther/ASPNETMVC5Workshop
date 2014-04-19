@@ -1,0 +1,6 @@
+﻿
+.movies > div {
+    border: solid 1px #cccccc;
+    padding:10px;
+    margin: 5px;
+}

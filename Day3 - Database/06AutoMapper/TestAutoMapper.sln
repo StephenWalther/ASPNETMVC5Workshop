@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30324.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAutoMapper", "TestAutoMapper\TestAutoMapper.csproj", "{843E3F7F-D4B8-4F80-8992-D6351D2E0017}"
 EndProject
 Global
